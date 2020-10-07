@@ -3,6 +3,7 @@ package com.company;
 public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
+    public static final String BLUE = "\033[0;34m";
     static int[][] boardEasy = {
             {4, 0, 0, 1, 0, 2, 6, 8, 0},
             {1, 0, 0, 0, 9, 0, 0, 0, 4},
@@ -21,7 +22,7 @@ public class Main {
                 System.out.print(RED + "______________________________________" + RESET);
                 System.out.println();
             } else {
-                System.out.print("______________________________________");
+                System.out.print(BLUE+"______________________________________"+RESET);
                 System.out.println();
             }
 
@@ -30,7 +31,7 @@ public class Main {
                 if (ligne % 3 == 0) {
                     System.out.print(RED + " | " + RESET);
                 } else {
-                    System.out.print(" | ");
+                    System.out.print(BLUE+" | "+RESET);
                 }
                 System.out.print(tableau[colonne][ligne]);
 
@@ -44,7 +45,7 @@ public class Main {
 
     }
 
-    static boolean ligne(int[][] board){
+    public static boolean ligne(int[][] board){
         int ligne=0;
         int colonne=0;
         int colonneplus=colonne+1;
@@ -67,6 +68,22 @@ public class Main {
         }
         return true;
     }
+/*
+    public static boolean verifSousSection(int[][]tableau){
+        int premierNombre = tableau[0][0];
+        int sousSection = 0;
+        int nbCases = 0;
+
+        while (sousSection<8){  //tant que il a pas verifier toutes les sous-sections
+
+            while (nbCases<8){  //tant que toute les cases de la sous-section ne sont pas verifier
+
+            }
+        }
+
+    }*/
+
+
 
 
     public static void main(String[] args) {

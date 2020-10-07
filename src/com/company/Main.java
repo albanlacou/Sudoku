@@ -68,6 +68,7 @@ public class Main {
         }
         return true;
     }
+<<<<<<< HEAD
 /*
     public static boolean verifSousSection(int[][]tableau){
         int premierNombre = tableau[0][0];
@@ -84,13 +85,41 @@ public class Main {
     }*/
 
 
+=======
+    static boolean colonne(int[][] board){
+        int ligne=0;
+        int colonne=0;
+        int ligneplus=ligne+1;
+        while (colonne<9){
+            if (board[ligne][colonne] == board[ligneplus][colonne]   &&   board[ligne][colonne] != 0){
+                return false;
+            }
+            else{
+                ligneplus=ligneplus+1;
+            }
+            if (ligneplus==8){
+                ligne=ligne+1;
+                ligneplus=ligne+1;
+            }
+            if(ligne==7){
+                ligne=0;
+                colonne=colonne+1;
+                ligneplus=ligne+1;
+            }
+        }
+        return true;
+    }
+>>>>>>> cd75f8f92b51fbd437c3381b69353f5eec6b006f
 
 
     public static void main(String[] args) {
         afficheGrille(boardEasy);
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
+        boolean colonneverifier=colonne(board);
+        System.out.println(" ");
         System.out.println(ligneverifier);
+        System.out.println(colonneverifier);
 
 
 

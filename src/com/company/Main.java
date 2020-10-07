@@ -67,13 +67,39 @@ public class Main {
         }
         return true;
     }
+    static boolean colonne(int[][] board){
+        int ligne=0;
+        int colonne=0;
+        int ligneplus=ligne+1;
+        while (colonne<9){
+            if (board[ligne][colonne] == board[ligneplus][colonne]   &&   board[ligne][colonne] != 0){
+                return false;
+            }
+            else{
+                ligneplus=ligneplus+1;
+            }
+            if (ligneplus==8){
+                ligne=ligne+1;
+                ligneplus=ligne+1;
+            }
+            if(ligne==7){
+                ligne=0;
+                colonne=colonne+1;
+                ligneplus=ligne+1;
+            }
+        }
+        return true;
+    }
 
 
     public static void main(String[] args) {
         afficheGrille(boardEasy);
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
+        boolean colonneverifier=colonne(board);
+        System.out.println(" ");
         System.out.println(ligneverifier);
+        System.out.println(colonneverifier);
 
 
 

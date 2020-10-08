@@ -202,7 +202,7 @@ public class Main {
         //System.out.println(colonneverifier);
         //System.out.println(sectionverifier);
 
-        boolean isTrue = verifGrilleSimple();
+        boolean isTrue = verifGrilleSimple(boardEasy);
         System.out.println(isTrue);
 
         grilleSimple(boardEasy,0);

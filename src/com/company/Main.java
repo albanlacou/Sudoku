@@ -21,7 +21,7 @@ public class Main {
             {6, 0, 7, 9, 0, 5, 3, 0, 0}
     };
 
-    public static void grilleSimple(int[][] boardComplexe,int nbSection){
+    public static int[] grilleSimple(int[][] boardComplexe,int nbSection){
         int[] boardSimple = {0,0,0,0,0,0,0,0,0};
         int ligne=0;
         int colonne =0;
@@ -76,9 +76,29 @@ public class Main {
                 colonne = 0+add;
                 ligne++;
             }
-        }afficheTableauSimple(boardSimple);
+        }
+        return boardSimple;
     }
+    public static boolean verifGrilleSimple(int[][]board){
+        for(int i = 0;i<10;i++){ //boucle qui verifie toute les sections
+            int[] tableau = grilleSimple(board,i);
+            for(int n =0;n<9;n++){  //boucle qui verifie 1 section complete
+                int nb = tableau[n];
+                for(int s = 1;s<9;s++){
+                    if(n==s){
+                        s++;
+                        } else{
+                        int nb2 = tableau[s];
+                        if(nb == nb2 && nb !=0 && nb2 !=0){
+                            return false;
+                        }
+                    }
 
+                }
+
+            }
+        }return true;
+    }
 
 
     public static void afficheTableauSimple(int[] tableau){
@@ -154,7 +174,7 @@ public class Main {
 
     }
     public static boolean tableauverif(int[][] board){
-        if (ligneplus(board)==true && colonneplus(board)==true ){
+        if (ligneplus(board)==true && colonneplus(board)==true &&  verifGrilleSimple(board)==true ){
             return true;
         }
         else {
@@ -219,12 +239,14 @@ public class Main {
         int [][] board=boardEasy;
         boolean ligneverifier=ligneplus(board);
         boolean colonneverifier=colonneplus(board);
+        boolean sectionVerifier = verifGrilleSimple(board);
         boolean tableauverifier=tableauverif(board);
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
+        System.out.println(sectionVerifier);
         System.out.println(tableauverifier);
-        grilleSimple(boardEasy,9);
+
 
 
     }

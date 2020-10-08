@@ -96,47 +96,6 @@ public class Main {
         }
         return true;
     }
-    static boolean section(int[][] board){
-        int soussection=0;
-        int section=0;
-        int ligne=0;
-        int colonne=0;
-        int ligneplus=ligne;
-        int colonneplus=colonne+1;
-        int truc=0;
-        while (truc<3){
-            if (board[ligne][colonne] == board[ligneplus][colonneplus]   &&   board[ligne][colonne] != 0){
-                return false;
-            }
-            else{
-                colonneplus=colonneplus+1;
-            }
-            if (colonneplus==3){
-                colonneplus=0;
-                ligneplus=ligneplus+1;
-                soussection=soussection+1;
-            }
-            if (soussection==3){
-                colonne=colonne+1;
-                ligneplus=ligne;
-                colonneplus=colonne+1;
-                soussection=0;
-                section=section+1;
-                if(colonneplus==3) {
-                    colonneplus = 0;
-                    ligneplus=ligne+1;
-                }
-                if(colonne==3){
-                    ligne=ligne+1;
-                    colonne=0;
-                }
-                if(section==2){
-                    return true;
-                }
-            }
-        }
-        return true;
-    }
 
 
     public static void main(String[] args) {
@@ -144,11 +103,9 @@ public class Main {
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
         boolean colonneverifier=colonne(board);
-        boolean sectionverifier=section(board);
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
-        System.out.println(sectionverifier);
 
 
 

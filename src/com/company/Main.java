@@ -181,7 +181,10 @@ public class Main {
         }
         return true;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> ea5820184a4734923a038547996204dc17fb7e6c
 
 
     public static void main(String[] args) {
@@ -189,12 +192,28 @@ public class Main {
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
         boolean colonneverifier=colonne(board);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        System.out.println(" ");
+        System.out.println(ligneverifier);
+        System.out.println(colonneverifier);
+
+=======
+        boolean sectionverifier=section(board);
+>>>>>>> ea5820184a4734923a038547996204dc17fb7e6c
         //System.out.println(" ");
         //System.out.println(ligneverifier);
         //System.out.println(colonneverifier);
         //System.out.println(sectionverifier);
+<<<<<<< HEAD
         boolean isTrue = verifGrilleSimple();
         System.out.println(isTrue);
+=======
+        grilleSimple(boardEasy,9);
+>>>>>>> a75d6f31e97ca12d926f8dd51bb50f9c115ab721
+
+>>>>>>> ea5820184a4734923a038547996204dc17fb7e6c
 
     }
 }

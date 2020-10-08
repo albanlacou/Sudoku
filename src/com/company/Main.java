@@ -115,6 +115,55 @@ public class Main {
 
 
     }
+    public static boolean ligneplus(int[][] board) {
+        int ligne = 0;
+        while (ligne < 9) {
+            for (int i = 1; i < 10; i++) {
+                int value = 0;
+                for (int colonne = 0; colonne < board.length; colonne++) {
+                    if (i == board[ligne][colonne]) {
+                        value++;
+                    }
+                    if (value > 1) {
+                        return false;
+                    }
+                }
+            }
+            ligne = ligne + 1;
+        }
+            return true;
+
+    }
+    public static boolean colonneplus(int[][] board) {
+        int colonne = 0;
+        while (colonne < 9) {
+            for (int i = 1; i < 10; i++) {
+                int value = 0;
+                for (int ligne = 0; ligne < board.length; ligne++) {
+                    if (i == board[ligne][colonne]) {
+                        value++;
+                    }
+                    if (value > 1) {
+                        return false;
+                    }
+                }
+            }
+            colonne = colonne + 1;
+        }
+        return true;
+
+    }
+    public static boolean tableauverif(int[][] board){
+        if (ligneplus(board)==true && colonneplus(board)==true ){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+
     public static boolean ligne(int[][] board){
         int ligne=0;
         int colonne=0;
@@ -138,7 +187,7 @@ public class Main {
         }
         return true;
     }
-    static boolean colonne(int[][] board){
+    public static boolean colonne(int[][] board){
         int ligne=0;
         int colonne=0;
         int ligneplus=ligne+1;
@@ -163,24 +212,19 @@ public class Main {
     }
 
 
+
+
     public static void main(String[] args) {
-        //afficheGrille(boardEasy);
+        afficheGrille(boardEasy);
         int [][] board=boardEasy;
-        boolean ligneverifier=ligne(board);
-        boolean colonneverifier=colonne(board);
-<<<<<<< HEAD
+        boolean ligneverifier=ligneplus(board);
+        boolean colonneverifier=colonneplus(board);
+        boolean tableauverifier=tableauverif(board);
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
-
-=======
-        boolean sectionverifier=section(board);
-        //System.out.println(" ");
-        //System.out.println(ligneverifier);
-        //System.out.println(colonneverifier);
-        //System.out.println(sectionverifier);
+        System.out.println(tableauverifier);
         grilleSimple(boardEasy,9);
->>>>>>> a75d6f31e97ca12d926f8dd51bb50f9c115ab721
 
 
     }

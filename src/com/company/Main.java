@@ -21,7 +21,7 @@ public class Main {
             {6, 0, 7, 9, 0, 5, 3, 0, 0}
     };
 
-    public static void grilleSimple(int[][] boardComplexe,int nbSection){
+    public static int[] grilleSimple(int[][] boardComplexe,int nbSection){
         int[] boardSimple = {0,0,0,0,0,0,0,0,0};
         int ligne=0;
         int colonne =0;
@@ -76,9 +76,29 @@ public class Main {
                 colonne = 0+add;
                 ligne++;
             }
-        }afficheTableauSimple(boardSimple);
+        }
+        return boardSimple;
     }
+    public static boolean verifGrilleSimple(){
+        for(int i = 0;i<10;i++){ //boucle qui verifie toute les sections
+            int[] tableau = grilleSimple(boardEasy,i);
+            for(int n =0;n<9;n++){  //boucle qui verifie 1 section complete
+                int nb = tableau[n];
+                for(int s = 1;s<9;s++){
+                    if(n==s){
+                        s++;
+                        } else{
+                        int nb2 = tableau[s];
+                        if(nb == nb2 && nb !=0 && nb2 !=0){
+                            return false;
+                        }
+                    }
 
+                }
+
+            }
+        }return true;
+    }
 
 
     public static void afficheTableauSimple(int[] tableau){
@@ -161,47 +181,7 @@ public class Main {
         }
         return true;
     }
-    static boolean section(int[][] board){
-        int soussection=0;
-        int section=0;
-        int ligne=0;
-        int colonne=0;
-        int ligneplus=ligne;
-        int colonneplus=colonne+1;
-        int truc=0;
-        while (truc<3){
-            if (board[ligne][colonne] == board[ligneplus][colonneplus]   &&   board[ligne][colonne] != 0){
-                return false;
-            }
-            else{
-                colonneplus=colonneplus+1;
-            }
-            if (colonneplus==3){
-                colonneplus=0;
-                ligneplus=ligneplus+1;
-                soussection=soussection+1;
-            }
-            if (soussection==3){
-                colonne=colonne+1;
-                ligneplus=ligne;
-                colonneplus=colonne+1;
-                soussection=0;
-                section=section+1;
-                if(colonneplus==3) {
-                    colonneplus = 0;
-                    ligneplus=ligne+1;
-                }
-                if(colonne==3){
-                    ligne=ligne+1;
-                    colonne=0;
-                }
-                if(section==2){
-                    return true;
-                }
-            }
-        }
-        return true;
-    }
+
 
 
     public static void main(String[] args) {
@@ -209,13 +189,12 @@ public class Main {
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
         boolean colonneverifier=colonne(board);
-        boolean sectionverifier=section(board);
         //System.out.println(" ");
         //System.out.println(ligneverifier);
         //System.out.println(colonneverifier);
         //System.out.println(sectionverifier);
-        grilleSimple(boardEasy,9);
-
+        boolean isTrue = verifGrilleSimple();
+        System.out.println(isTrue);
 
     }
 }

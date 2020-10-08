@@ -6,9 +6,19 @@ public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
     public static final String BLUE = "\033[0;34m";
+    static boolean nbSup10 = false;
 
-
-
+    static int[][] boardEasy2 = {
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+    };
     static int[][] boardEasy = {
             {4, 0, 0, 1, 0, 2, 6, 8, 0},
             {1, 0, 0, 0, 9, 0, 0, 0, 4},
@@ -100,6 +110,20 @@ public class Main {
         }return true;
     }
 
+    public static boolean verif0(int[][] board) {
+        for (int ligne = 0 ; ligne < 9 ; ligne++){
+                for (int colonne = 0; colonne < board.length; colonne++) {
+                    if (0 == board[ligne][colonne]) {
+                        return false;
+                    }
+
+                    }
+            }
+
+            return true;
+        }
+
+
 
     public static void afficheTableauSimple(int[] tableau){
         for(int i = 0;i<tableau.length;i++){
@@ -137,7 +161,7 @@ public class Main {
     }
     public static boolean ligneplus(int[][] board) {
         int ligne = 0;
-        while (ligne < 9) {
+        while (ligne < 1) { //remettre 9
             for (int i = 1; i < 10; i++) {
                 int value = 0;
                 for (int colonne = 0; colonne < board.length; colonne++) {
@@ -181,6 +205,66 @@ public class Main {
             return false;
         }
     }
+    public static int[][] backtracking(int[][]board,int ligne,int colonne,int nb2){
+
+        boolean isValid = false;
+        if(verif0(board) == true){
+            return board;
+        }
+        if(colonne>8){
+                colonne = 0;
+                ligne = ligne+1;
+
+            }
+        int nb = board[ligne][colonne];
+            if (nb != 0){
+                backtracking(board,ligne,colonne+1,nb2);
+                //peut etre placer un retour en arriere ici mais probleme avec ligne
+
+
+            }else{
+                System.out.print(isValid);
+                while(isValid == false){
+                    board[ligne][colonne] = nb2+1;
+                    nb2++;
+                    isValid = tableauverif(board);
+                    afficheGrille(board);
+                    if(nb2>9){
+                        nbSup10 = true;
+                        return board;
+                    }
+                }
+
+
+
+
+
+                    }
+            backtracking(board,ligne,colonne+1,0);
+
+
+
+                if(nbSup10 ==true){
+
+                    isValid = false;
+                    while(isValid == false && nb2<10){
+                        nb2++;
+                        isValid = tableauverif(board);
+                    }nbSup10 = false;
+                    return backtracking(board,ligne,colonne+1,1);
+
+
+
+
+
+
+
+            }return board;
+
+
+
+        }
+
 
 
 
@@ -235,17 +319,21 @@ public class Main {
 
 
     public static void main(String[] args) {
-        afficheGrille(boardEasy);
+        //afficheGrille(boardEasy);
         int [][] board=boardEasy;
         boolean ligneverifier=ligneplus(board);
         boolean colonneverifier=colonneplus(board);
         boolean sectionVerifier = verifGrilleSimple(board);
         boolean tableauverifier=tableauverif(board);
 
+        int[][]b = backtracking(boardEasy,0,0,0);
+        /*
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
-        System.out.println(sectionVerifier);
-        System.out.println(tableauverifier);
+        System.out.println(sectionVerifier);*/
+        //System.out.println(tableauverifier);
+        //boolean zero = verif0(boardEasy2);
+        //System.out.print(zero);
     }
 }

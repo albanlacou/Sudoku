@@ -105,7 +105,7 @@ public class Main {
         for(int i = 0;i<tableau.length;i++){
             System.out.print(tableau[i]);
         }
-    }
+    } //a enlever si plus besoin
     public static void afficheGrille(int[][] tableau) {
 
         for (int colonne = 0; colonne < 9; colonne++) {
@@ -231,48 +231,21 @@ public class Main {
         return true;
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 72fb073ae5e0db52c85567170ab1988ae68ebaaa
 
 
     public static void main(String[] args) {
         afficheGrille(boardEasy);
         int [][] board=boardEasy;
-<<<<<<< HEAD
-        boolean ligneverifier=ligne(board);
-        boolean colonneverifier=colonne(board);
-
-=======
         boolean ligneverifier=ligneplus(board);
         boolean colonneverifier=colonneplus(board);
         boolean sectionVerifier = verifGrilleSimple(board);
         boolean tableauverifier=tableauverif(board);
->>>>>>> 72fb073ae5e0db52c85567170ab1988ae68ebaaa
+
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
         System.out.println(sectionVerifier);
         System.out.println(tableauverifier);
-
-
-<<<<<<< HEAD
-
-        //boolean sectionverifier=section(board);
-
-        //System.out.println(" ");
-        //System.out.println(ligneverifier);
-        //System.out.println(colonneverifier);
-        //System.out.println(sectionverifier);
-
-        boolean isTrue = verifGrilleSimple(boardEasy);
-        System.out.println(isTrue);
-
-        grilleSimple(boardEasy,0);
-
-=======
->>>>>>> 72fb073ae5e0db52c85567170ab1988ae68ebaaa
-
     }
 }

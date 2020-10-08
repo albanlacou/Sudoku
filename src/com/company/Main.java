@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.SortedMap;
+
 public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
@@ -19,8 +21,71 @@ public class Main {
             {6, 0, 7, 9, 0, 5, 3, 0, 0}
     };
 
+    public static void grilleSimple(int[][] boardComplexe,int nbSection){
+        int[] boardSimple = {0,0,0,0,0,0,0,0,0};
+        int ligne=0;
+        int colonne =0;
+        int add =0;
+        if(nbSection == 1){
+            ligne = 0;
+            colonne = 0;
+        }
+        if(nbSection ==2){
+            ligne = 0;
+            colonne = 3;
+            add = 3;
+        }
+        if(nbSection ==3){
+            ligne = 0;
+            colonne =6;
+            add = 6;
+        }
+        if(nbSection == 4){
+            ligne = 3;
+            colonne = 0;
+        }
+        if(nbSection == 5){
+            ligne = 3;
+            colonne = 3;
+            add = 3;
+        }
+        if(nbSection == 6){
+            ligne =3;
+            colonne = 6;
+            add = 6;
+        }
+        if(nbSection == 7){
+            ligne = 6;
+            colonne = 0;
+        }
+        if(nbSection == 8){
+            ligne = 6;
+            colonne = 3;
+            add = 3;
+        }
+        if (nbSection == 9){
+            ligne = 6;
+            colonne = 6;
+            add = 6;
+        }
+        for(int i = 0;i<9;i++){
+
+            boardSimple[i] = boardComplexe[ligne][colonne];
+            colonne++;
+            if(colonne>2+add){
+                colonne = 0+add;
+                ligne++;
+            }
+        }afficheTableauSimple(boardSimple);
+    }
 
 
+
+    public static void afficheTableauSimple(int[] tableau){
+        for(int i = 0;i<tableau.length;i++){
+            System.out.print(tableau[i]);
+        }
+    }
     public static void afficheGrille(int[][] tableau) {
 
         for (int colonne = 0; colonne < 9; colonne++) {
@@ -99,14 +164,23 @@ public class Main {
 
 
     public static void main(String[] args) {
-        afficheGrille(boardEasy);
+        //afficheGrille(boardEasy);
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
         boolean colonneverifier=colonne(board);
+<<<<<<< HEAD
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
 
+=======
+        boolean sectionverifier=section(board);
+        //System.out.println(" ");
+        //System.out.println(ligneverifier);
+        //System.out.println(colonneverifier);
+        //System.out.println(sectionverifier);
+        grilleSimple(boardEasy,9);
+>>>>>>> a75d6f31e97ca12d926f8dd51bb50f9c115ab721
 
 
     }

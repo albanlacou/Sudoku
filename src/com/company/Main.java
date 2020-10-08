@@ -79,9 +79,9 @@ public class Main {
         }
         return boardSimple;
     }
-    public static boolean verifGrilleSimple(){
+    public static boolean verifGrilleSimple(int[][]board){
         for(int i = 0;i<10;i++){ //boucle qui verifie toute les sections
-            int[] tableau = grilleSimple(boardEasy,i);
+            int[] tableau = grilleSimple(board,i);
             for(int n =0;n<9;n++){  //boucle qui verifie 1 section complete
                 int nb = tableau[n];
                 for(int s = 1;s<9;s++){
@@ -181,10 +181,7 @@ public class Main {
         }
         return true;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> ea5820184a4734923a038547996204dc17fb7e6c
 
 
     public static void main(String[] args) {
@@ -192,28 +189,24 @@ public class Main {
         int [][] board=boardEasy;
         boolean ligneverifier=ligne(board);
         boolean colonneverifier=colonne(board);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);
 
-=======
-        boolean sectionverifier=section(board);
->>>>>>> ea5820184a4734923a038547996204dc17fb7e6c
+
+        //boolean sectionverifier=section(board);
+
         //System.out.println(" ");
         //System.out.println(ligneverifier);
         //System.out.println(colonneverifier);
         //System.out.println(sectionverifier);
-<<<<<<< HEAD
+
         boolean isTrue = verifGrilleSimple();
         System.out.println(isTrue);
-=======
-        grilleSimple(boardEasy,9);
->>>>>>> a75d6f31e97ca12d926f8dd51bb50f9c115ab721
 
->>>>>>> ea5820184a4734923a038547996204dc17fb7e6c
+        grilleSimple(boardEasy,0);
+
 
     }
 }

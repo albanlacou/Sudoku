@@ -4,6 +4,7 @@ public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
     public static final String BLUE = "\033[0;34m";
+    public static int tour = 0;
 
     static int[][] boardEasy = {
             {4, 0, 0, 1, 0, 2, 6, 8, 0},
@@ -15,6 +16,41 @@ public class Main {
             {9, 0, 3, 0, 0, 0, 0, 0, 8},
             {2, 5, 0, 6, 0, 0, 1, 0, 7},
             {6, 0, 7, 9, 0, 5, 3, 0, 0}
+    };
+    static int[][] boardMedium = {
+            {0, 7, 0, 3, 4, 0, 2, 0, 6},
+            {9, 0, 0, 7, 0, 6, 0, 0, 1},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {2, 0, 0, 0, 7, 9, 8, 6, 0},
+            {0, 0, 0, 0, 0, 2, 3, 0, 4},
+            {4, 0, 7, 5, 0, 8, 0, 0, 0},
+            {0, 0, 0, 9, 0, 0, 0, 0, 0},
+            {0, 0, 6, 0, 0, 0, 0, 1, 7},
+            {5, 1, 0, 0, 8, 0, 4, 0, 2}
+    };
+
+    static int[][] boardHard = {
+            {0, 0, 0, 0, 0, 0, 9, 4, 0},
+            {6, 0, 0, 0, 0, 0, 2, 7, 0},
+            {8, 2, 0, 0, 4, 9, 6, 0, 0},
+            {0, 7, 4, 0, 0, 0, 0, 0, 0},
+            {1, 0, 0, 7, 6, 0, 0, 0, 0},
+            {0, 6, 2, 0, 0, 5, 0, 8, 0},
+            {0, 0, 0, 0, 5, 7, 0, 2, 3},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {7, 5, 3, 2, 0, 4, 0, 0, 0}
+    };
+
+    static int[][] boardGodLike = {
+            {0, 0, 0, 6, 0, 2, 8, 0, 4},
+            {0, 0, 0, 0, 3, 0, 0, 0, 7},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {4, 0, 6, 0, 5, 0, 3, 0, 0},
+            {2, 0, 8, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 9, 1, 0},
+            {1, 0, 0, 0, 0, 0, 2, 0, 0},
+            {0, 7, 0, 9, 0, 0, 0, 5, 0},
+            {0, 0, 2, 4, 0, 0, 0, 0, 8}
     };
 
     public static int[] grilleSimple(int[][] boardComplexe,int nbSection){
@@ -75,6 +111,8 @@ public class Main {
         }
         return boardSimple;
     }
+
+   
     public static boolean verifGrilleSimple(int[][]board){
         for(int i = 0;i<10;i++){ //boucle qui verifie toute les sections
             int[] tableau = grilleSimple(board,i);
@@ -95,6 +133,12 @@ public class Main {
             }
         }return true;
     }
+
+
+    /**
+     * la fonction afficheGrille affiche la grille de sudoku du tableau rentrer dans la fonction
+     * @param tableau est un tableau utiliser dans la fonction afficheGrille
+     */
     public static void afficheGrille(int[][] tableau) {
 
         for (int colonne = 0; colonne < 9; colonne++) {
@@ -124,6 +168,13 @@ public class Main {
 
 
     }
+
+
+    /**
+     *la fonction ligneplus dit si les ligne du tableau on deux fois le meme chiffre ou pas
+     * @param board est un tableau utiliser dans la fonction ligneplus
+     * @return true si les ligne n'ont pas deux fois le meme nombre et false si il y a deux chiffre dans la meme ligne
+     */
     public static boolean ligneplus(int[][] board) {
         int ligne = 0;
         while (ligne < 1) { //remettre 9
@@ -143,6 +194,13 @@ public class Main {
             return true;
 
     }
+
+
+    /**
+     *la fonction colonneplus dit si les colonne du tableau on deux fois le meme chiffre ou pas
+     * @param board est un tableau utiliser dans la fonction colonneplus
+     * @return true si les colonne n'ont pas deux fois le meme nombre et false si il y a deux chiffre dans la meme colonne
+     */
     public static boolean colonneplus(int[][] board) {
         int colonne = 0;
         while (colonne < 9) {
@@ -162,6 +220,13 @@ public class Main {
         return true;
 
     }
+
+
+    /**
+     *la fonction tableauverif dit si le sudoku est valide ou pas
+     * @param board est un tableau utiliser dans la fonction tableauverif
+     * @return false si il y a plus d'une fois un chiffre dans la meme colonne ou la meme ligne ou la meme section sinon true
+     */
     public static boolean tableauverif(int[][] board){
         if (ligneplus(board)==true && colonneplus(board)==true &&  verifGrilleSimple(board)==true ){
             return true;
@@ -170,12 +235,20 @@ public class Main {
             return false;
         }
     }
+
+
+    /**
+     * la fonction fini remplie le sodoku automatiquement et te previen si le sudoku ne peut pas etre resolu
+     * @param board est un tableau utiliser dans la fonction fini
+     * @return true si le sudoku est remplie et valide sinon revoie false si le sudoku ne peut pas etre resolu
+     */
     public static boolean fini(int [][] board){
       for (int ligne=0;ligne<9;ligne++) {
           for (int colonne = 0; colonne < 9; colonne++) {
               if (board[ligne][colonne]==0 ) {
                   for (int i = 1; i < 10; i++) {
                       board[ligne][colonne] = i;
+                      tour++;
                       if (tableauverif(board) == true && fini(board)==true) {
                               return true;
                       }
@@ -190,9 +263,7 @@ public class Main {
     }
 
 
-
-
-    public static boolean ligne(int[][] board){
+    /*public static boolean ligne(int[][] board){
         int ligne=0;
         int colonne=0;
         int colonneplus=colonne+1;
@@ -238,17 +309,23 @@ public class Main {
         }
         return true;
     }
-
-
+*/
 
 
     public static void main(String[] args) {
+        long TimerStart = System.currentTimeMillis();
         int [][] board=boardEasy;
         boolean fin=fini(board);
         System.out.println(" ");
         System.out.println(" ");
         afficheGrille(board);
         System.out.println(" ");
-        System.out.println(fin);
+        System.out.println("Le sudoku est-il complet : "+fin);
+        long TimerEnd = System.currentTimeMillis();
+        long Timer = TimerEnd - TimerStart;
+        System.out.println(" ");
+        System.out.println("STATS PART :");
+        System.out.println("Le sudoku s'est résolu en "+Timer+"ms");
+        System.out.println("Le sudoku à effectué "+tour+" actions avant de finir");
     }
 }

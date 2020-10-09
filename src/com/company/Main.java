@@ -58,6 +58,18 @@ public class Main {
             {0, 0, 2, 4, 0, 0, 0, 0, 8}
     };
 
+
+    /**
+     * demande le nom du fichier en argument
+     * @param file chemin du fichier
+     */
+    public static void fichier(String file){
+        File f = new File(file);
+        System.out.println(f.getAbsolutePath());
+
+    }
+
+
     /**
      * decoupe les sous section pour en faire des lignes simples
      * @param boardComplexe a découper
@@ -339,7 +351,7 @@ public class Main {
 
         public static void main (String[]args){
 
-        /*
+
         long TimerStart = System.currentTimeMillis();
         int [][] board=boardEasy;
         boolean fin=fini(board);
@@ -353,9 +365,8 @@ public class Main {
         System.out.println(" ");
         System.out.println("STATS PART :");
         System.out.println("Le sudoku s'est résolu en "+Timer+"ms");
-        System.out.println("Le sudoku à effectué "+tour+" actions avant de finir");*/
-            int[][] board = recupFichier();
-            afficheGrille(board);
+        System.out.println("Le sudoku à effectué "+tour+" actions avant de finir");
+
 
         }
     }

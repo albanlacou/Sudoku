@@ -58,6 +58,12 @@ public class Main {
             {0, 0, 2, 4, 0, 0, 0, 0, 8}
     };
 
+    /**
+     * decoupe les sous section pour en faire des lignes simples
+     * @param boardComplexe a découper
+     * @param nbSection la section a prendre
+     * @return une ligne qui recupere une sous-section
+     */
     public static int[] grilleSimple(int[][] boardComplexe, int nbSection) {
         int[] boardSimple = {0, 0, 0, 0, 0, 0, 0, 0, 0};
         int ligne = 0;
@@ -117,7 +123,11 @@ public class Main {
         return boardSimple;
     }
 
-
+    /**
+     * verifie si une ligne d'un tableau a 2nombres identiques
+     * @param board simple a verifier
+     * @return si la ligne du tableau possede 2 nombre identique
+     */
     public static boolean verifGrilleSimple(int[][] board) {
         for (int i = 0; i < 10; i++) { //boucle qui verifie toute les sections
             int[] tableau = grilleSimple(board, i);
@@ -141,19 +151,12 @@ public class Main {
     }
 
 
-    public static boolean verif0(int[][] board) {
-        for (int ligne = 0; ligne < 9; ligne++) {
-            for (int colonne = 0; colonne < board.length; colonne++) {
-                if (0 == board[ligne][colonne]) {
-                    return false;
-                }
 
-            }
-        }
 
-        return true;
-    }
-
+    /**
+     * recupere un tableau a partir d'un fichier
+     * @return le tableau a partir d'un fichier
+     */
     public static int[][] recupFichier() {
         int[][] board = new int[9][9];
         File f = new File("sud");
@@ -193,11 +196,7 @@ public class Main {
     }
 
 
-    public static void afficheTableauSimple(int[] tableau) {
-        for (int i = 0; i < tableau.length; i++) {
-            System.out.print(tableau[i]);
-        }
-    } //a enlever si plus besoin
+
 
 
     /**
@@ -332,54 +331,10 @@ public class Main {
         return true;
     }
 
-    
 
 
-        public static boolean ligne ( int[][] board){
 
-            int ligne = 0;
-            int colonne = 0;
-            int colonneplus = colonne + 1;
-            while (ligne < 9) {
-                if (board[ligne][colonne] == board[ligne][colonneplus] && board[ligne][colonne] != 0) {
-                    return false;
-                } else {
-                    colonneplus = colonneplus + 1;
-                }
-                if (colonneplus == 8) {
-                    colonne = colonne + 1;
-                    colonneplus = colonne + 1;
-                }
-                if (colonne == 7) {
-                    colonne = 0;
-                    ligne = ligne + 1;
-                    colonneplus = colonne + 1;
-                }
-            }
-            return true;
-        }
-        public static boolean colonne ( int[][] board){
-            int ligne = 0;
-            int colonne = 0;
-            int ligneplus = ligne + 1;
-            while (colonne < 9) {
-                if (board[ligne][colonne] == board[ligneplus][colonne] && board[ligne][colonne] != 0) {
-                    return false;
-                } else {
-                    ligneplus = ligneplus + 1;
-                }
-                if (ligneplus == 8) {
-                    ligne = ligne + 1;
-                    ligneplus = ligne + 1;
-                }
-                if (ligne == 7) {
-                    ligne = 0;
-                    colonne = colonne + 1;
-                    ligneplus = ligne + 1;
-                }
-            }
-            return true;
-        }
+
 
 
         public static void main (String[]args){

@@ -135,6 +135,7 @@ public class Main {
         return boardSimple;
     }
 
+
     /**
      * verifie si une ligne d'un tableau a 2nombres identiques
      * @param board simple a verifier
@@ -161,8 +162,6 @@ public class Main {
         }
         return true;
     }
-
-
 
 
     /**
@@ -206,9 +205,6 @@ public class Main {
 
         return board;
     }
-
-
-
 
 
     /**
@@ -256,7 +252,7 @@ public class Main {
      */
     public static boolean ligneplus(int[][] board) {
         int ligne = 0;
-        while (ligne < 1) { //remettre 9
+        while (ligne < 9) {
             for (int i = 1; i < 10; i++) {
                 int value = 0;
                 for (int colonne = 0; colonne < board.length; colonne++) {
@@ -353,7 +349,8 @@ public class Main {
 
 
         long TimerStart = System.currentTimeMillis();
-        int [][] board=boardEasy;
+        int [][] board=recupFichier();
+        afficheGrille(board);
         boolean fin=fini(board);
         System.out.println(" ");
         System.out.println(" ");

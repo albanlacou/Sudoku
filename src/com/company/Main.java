@@ -205,32 +205,25 @@ public class Main {
             return false;
         }
     }
-    public static boolean backtracking(int[][]board){//,int ligne,int colonne,int nb2){
-        int colonne = 0;
-        int ligne = 0;
-        int nb2 = 0;
-        boolean isValid = false;
+    public static boolean fini(int [][] board){
+      for (int ligne=0;ligne<9;ligne++) {
+          for (int colonne = 0; colonne < 9; colonne++) {
+              if (board[ligne][colonne]==0 ) {
+                  for (int i = 1; i < 10; i++) {
+                      board[ligne][colonne] = i;
+                      if (tableauverif(board) == true && fini(board)==true) {
+                              return true;
+                      }
+                      board[ligne][colonne] = 0;
 
-        while (isValid == false){
-            for(ligne = 0;ligne<=9;ligne++){
-                for(colonne = 0;colonne<=9;colonne++){
-                    for(int test = 0;test<10;test++){
-                        int nb = board[ligne][colonne];
-                        board[ligne][colonne]= nb++;
-                        isValid = tableauverif(board);
-                        afficheGrille(board);
-                        if(isValid = true){
-                            isValid = backtracking(board);
-                        }
-                    }
-
-
-
-                    colonne++;
-                }ligne++;
-            }
-        }return true;
+                  }
+                  return false;
+              }
+          }
+      }
+        return true;
     }
+
 
 
 
@@ -287,13 +280,7 @@ public class Main {
     public static void main(String[] args) {
         //afficheGrille(boardEasy);
         int [][] board=boardEasy;
-        boolean ligneverifier=ligneplus(board);
-        boolean colonneverifier=colonneplus(board);
-        boolean sectionVerifier = verifGrilleSimple(board);
-        boolean tableauverifier=tableauverif(board);
-
-        boolean back = backtracking(boardEasy);
-        /*
+        boolean fin=fini(board);
         System.out.println(" ");
         System.out.println(ligneverifier);
         System.out.println(colonneverifier);

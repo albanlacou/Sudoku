@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.SortedMap;
-
 public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
@@ -99,13 +97,6 @@ public class Main {
             }
         }return true;
     }
-
-
-    public static void afficheTableauSimple(int[] tableau){
-        for(int i = 0;i<tableau.length;i++){
-            System.out.print(tableau[i]);
-        }
-    }
     public static void afficheGrille(int[][] tableau) {
 
         for (int colonne = 0; colonne < 9; colonne++) {
@@ -182,6 +173,26 @@ public class Main {
         }
     }
 
+    public static boolean fini(int [][] board){
+      for (int ligne=0;ligne<9;ligne++) {
+          for (int colonne = 0; colonne < 9; colonne++) {
+              if (board[ligne][colonne]==0 ) {
+                  for (int i = 1; i < 10; i++) {
+                      board[ligne][colonne] = i;
+                      if (tableauverif(board) == true && fini(board)==true) {
+                              return true;
+                      }
+                      board[ligne][colonne] = 0;
+
+                  }
+                  return false;
+              }
+          }
+      }
+        return true;
+    }
+
+
 
 
     public static boolean ligne(int[][] board){
@@ -237,15 +248,13 @@ public class Main {
     public static void main(String[] args) {
         afficheGrille(boardEasy);
         int [][] board=boardEasy;
-        boolean ligneverifier=ligneplus(board);
-        boolean colonneverifier=colonneplus(board);
-        boolean sectionVerifier = verifGrilleSimple(board);
-        boolean tableauverifier=tableauverif(board);
+        boolean fin=fini(board);
         System.out.println(" ");
-        System.out.println(ligneverifier);
-        System.out.println(colonneverifier);
-        System.out.println(sectionVerifier);
-        System.out.println(tableauverifier);
+        System.out.println(" ");
+        afficheGrille(board);
+        System.out.println(" ");
+        System.out.println(fin);
+
 
 
 

@@ -205,66 +205,32 @@ public class Main {
             return false;
         }
     }
-    public static int[][] backtracking(int[][]board,int ligne,int colonne,int nb2){
-
+    public static boolean backtracking(int[][]board){//,int ligne,int colonne,int nb2){
+        int colonne = 0;
+        int ligne = 0;
+        int nb2 = 0;
         boolean isValid = false;
-        if(verif0(board) == true){
-            return board;
-        }
-        if(colonne>8){
-                colonne = 0;
-                ligne = ligne+1;
 
-            }
-        int nb = board[ligne][colonne];
-            if (nb != 0){
-                backtracking(board,ligne,colonne+1,nb2);
-                //peut etre placer un retour en arriere ici mais probleme avec ligne
-
-
-            }else{
-                System.out.print(isValid);
-                while(isValid == false){
-                    board[ligne][colonne] = nb2+1;
-                    nb2++;
-                    isValid = tableauverif(board);
-                    afficheGrille(board);
-                    if(nb2>9){
-                        nbSup10 = true;
-                        return board;
-                    }
-                }
-
-
-
-
-
-                    }
-            backtracking(board,ligne,colonne+1,0);
-
-
-
-                if(nbSup10 ==true){
-
-                    isValid = false;
-                    while(isValid == false && nb2<10){
-                        nb2++;
+        while (isValid == false){
+            for(ligne = 0;ligne<=9;ligne++){
+                for(colonne = 0;colonne<=9;colonne++){
+                    for(int test = 0;test<10;test++){
+                        int nb = board[ligne][colonne];
+                        board[ligne][colonne]= nb++;
                         isValid = tableauverif(board);
-                    }nbSup10 = false;
-                    return backtracking(board,ligne,colonne+1,1);
+                        afficheGrille(board);
+                        if(isValid = true){
+                            isValid = backtracking(board);
+                        }
+                    }
 
 
 
-
-
-
-
-            }return board;
-
-
-
-        }
-
+                    colonne++;
+                }ligne++;
+            }
+        }return true;
+    }
 
 
 
@@ -326,7 +292,7 @@ public class Main {
         boolean sectionVerifier = verifGrilleSimple(board);
         boolean tableauverifier=tableauverif(board);
 
-        int[][]b = backtracking(boardEasy,0,0,0);
+        boolean back = backtracking(boardEasy);
         /*
         System.out.println(" ");
         System.out.println(ligneverifier);

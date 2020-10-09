@@ -5,6 +5,7 @@ public class Main {
     public static final String RESET = "\033[0m";
     public static final String BLUE = "\033[0;34m";
     static boolean nbSup10 = false;
+    public static int tour = 0;
 
     static int[][] boardEasy2 = {
             {4, 1, 1, 1, 1, 2, 6, 8, 1},
@@ -188,6 +189,7 @@ public class Main {
               if (board[ligne][colonne]==0 ) {
                   for (int i = 1; i < 10; i++) {
                       board[ligne][colonne] = i;
+                      tour++;
                       if (tableauverif(board) == true && fini(board)==true) {
                               return true;
                       }
@@ -255,12 +257,19 @@ public class Main {
 
 
     public static void main(String[] args) {
+        long TimerStart = System.currentTimeMillis();
         int [][] board=boardEasy;
         boolean fin=fini(board);
         System.out.println(" ");
         System.out.println(" ");
         afficheGrille(board);
         System.out.println(" ");
-        System.out.println(fin);
+        System.out.println("Le sudoku est-il complet : "+fin);
+        long TimerEnd = System.currentTimeMillis();
+        long Timer = TimerEnd - TimerStart;
+        System.out.println(" ");
+        System.out.println("STATS PART :");
+        System.out.println("Le sudoku s'est résolu en "+Timer+"ms");
+        System.out.println("Le sudoku à effectué "+tour+" actions avant de finir");
     }
 }

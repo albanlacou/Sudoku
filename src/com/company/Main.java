@@ -4,19 +4,7 @@ public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
     public static final String BLUE = "\033[0;34m";
-    static boolean nbSup10 = false;
 
-    static int[][] boardEasy2 = {
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-            {4, 1, 1, 1, 1, 2, 6, 8, 1},
-    };
     static int[][] boardEasy = {
             {4, 0, 0, 1, 0, 2, 6, 8, 0},
             {1, 0, 0, 0, 9, 0, 0, 0, 4},

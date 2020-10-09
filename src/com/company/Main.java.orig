@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.SortedMap;
-
 public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
@@ -109,27 +107,6 @@ public class Main {
             }
         }return true;
     }
-
-    public static boolean verif0(int[][] board) {
-        for (int ligne = 0 ; ligne < 9 ; ligne++){
-                for (int colonne = 0; colonne < board.length; colonne++) {
-                    if (0 == board[ligne][colonne]) {
-                        return false;
-                    }
-
-                    }
-            }
-
-            return true;
-        }
-
-
-
-    public static void afficheTableauSimple(int[] tableau){
-        for(int i = 0;i<tableau.length;i++){
-            System.out.print(tableau[i]);
-        }
-    } //a enlever si plus besoin
     public static void afficheGrille(int[][] tableau) {
 
         for (int colonne = 0; colonne < 9; colonne++) {
@@ -205,6 +182,28 @@ public class Main {
             return false;
         }
     }
+<<<<<<< HEAD
+    public static boolean backtracking(int[][]board){//,int ligne,int colonne,int nb2){
+        int colonne = 0;
+        int ligne = 0;
+        int nb2 = 0;
+        boolean isValid = false;
+
+        while (isValid == false){
+            for(ligne = 0;ligne<=9;ligne++){
+                for(colonne = 0;colonne<=9;colonne++){
+                    for(int test = 0;test<10;test++){
+                        int nb = board[ligne][colonne];
+                        board[ligne][colonne]= nb++;
+                        isValid = tableauverif(board);
+                        afficheGrille(board);
+                        if(isValid = true){
+                            isValid = backtracking(board);
+                        }
+                    }
+
+
+=======
     public static boolean fini(int [][] board){
       for (int ligne=0;ligne<9;ligne++) {
           for (int colonne = 0; colonne < 9; colonne++) {
@@ -223,6 +222,16 @@ public class Main {
       }
         return true;
     }
+>>>>>>> 4fa5a1593a9f311a1e1183caf2f8236cd6e718a4
+
+                    colonne++;
+                }ligne++;
+            }
+        }return true;
+    }
+
+
+
     public static boolean ligne(int[][] board){
         int ligne=0;
         int colonne=0;
@@ -274,6 +283,22 @@ public class Main {
 
 
     public static void main(String[] args) {
-        
+        int [][] board=boardEasy;
+<<<<<<< HEAD
+        boolean ligneverifier=ligneplus(board);
+        boolean colonneverifier=colonneplus(board);
+        boolean sectionVerifier = verifGrilleSimple(board);
+        boolean tableauverifier=tableauverif(board);
+
+        boolean back = backtracking(boardEasy);
+        /*
+=======
+        boolean fin=fini(board);
+        System.out.println(" ");
+        System.out.println(" ");
+        afficheGrille(board);
+>>>>>>> 4fa5a1593a9f311a1e1183caf2f8236cd6e718a4
+        System.out.println(" ");
+        System.out.println(fin);
     }
 }

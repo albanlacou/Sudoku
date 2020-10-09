@@ -4,9 +4,19 @@ public class Main {
     public static final String RED = "\033[0;31m";
     public static final String RESET = "\033[0m";
     public static final String BLUE = "\033[0;34m";
+    static boolean nbSup10 = false;
 
-
-
+    static int[][] boardEasy2 = {
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+            {4, 1, 1, 1, 1, 2, 6, 8, 1},
+    };
     static int[][] boardEasy = {
             {4, 0, 0, 1, 0, 2, 6, 8, 0},
             {1, 0, 0, 0, 9, 0, 0, 0, 4},
@@ -128,7 +138,7 @@ public class Main {
     }
     public static boolean ligneplus(int[][] board) {
         int ligne = 0;
-        while (ligne < 9) {
+        while (ligne < 1) { //remettre 9
             for (int i = 1; i < 10; i++) {
                 int value = 0;
                 for (int colonne = 0; colonne < board.length; colonne++) {
@@ -172,7 +182,6 @@ public class Main {
             return false;
         }
     }
-
     public static boolean fini(int [][] board){
       for (int ligne=0;ligne<9;ligne++) {
           for (int colonne = 0; colonne < 9; colonne++) {
@@ -246,7 +255,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-        afficheGrille(boardEasy);
         int [][] board=boardEasy;
         boolean fin=fini(board);
         System.out.println(" ");
@@ -254,9 +262,5 @@ public class Main {
         afficheGrille(board);
         System.out.println(" ");
         System.out.println(fin);
-
-
-
-
     }
 }
